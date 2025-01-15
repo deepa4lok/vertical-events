@@ -236,6 +236,13 @@ class SaleOrder(models.Model):
             ret_val["arch"] = etree.tostring(doc, encoding="unicode")
         return ret_val
 
+    def copy_data(self, default=None):
+        if default is None:
+            default = {}
+        if self.event_id:
+            default['analytic_account_id'] = self.event_id.analytic_account_id and self.event_id.analytic_account_id.id or False
+        return super(SaleOrder, self).copy_data(default)
+
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
