@@ -236,6 +236,21 @@ class SaleOrder(models.Model):
             ret_val["arch"] = etree.tostring(doc, encoding="unicode")
         return ret_val
 
+    # def copy_data(self, default=None):
+    #     if default is None:
+    #         default = {}
+    #     if self.event_id:
+    #         default['analytic_account_id'] = self.event_id.analytic_account_id and self.event_id.analytic_account_id.id or False
+    #     return super(SaleOrder, self).copy_data(default)
+
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        self.ensure_one()
+        default = dict(default or {})
+        if self.event_id:
+            default['analytic_account_id'] = self.event_id.analytic_account_id and self.event_id.analytic_account_id.id or False
+        return super(SaleOrder, self).copy(default=default)
+
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
