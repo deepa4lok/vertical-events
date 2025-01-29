@@ -205,6 +205,7 @@
         <t t-call="website_event_exhibitors.registration_complete_form"/>
     </t>
     <t t-else="" t-call="web.basic_layout">
+        <t t-set="title" t-value="event.name" />
         <t t-call="website_event_exhibitors.registration_complete_form"/>
     </t>
 </template>

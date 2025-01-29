@@ -16,7 +16,12 @@ class SaleOrder(models.Model):
         """
         Compute the total amounts of the SO.
         """
-        Event_SOT = self.env.ref('website_event_exhibitors.event_sale_type').id
+        event_sale_type = self.env.ref('website_event_exhibitors.event_sale_type', False)
+
+        if not event_sale_type:
+            return
+
+        Event_SOT = event_sale_type.id
 
         for order in self:
             if (order.type_id and order.type_id.id != Event_SOT):

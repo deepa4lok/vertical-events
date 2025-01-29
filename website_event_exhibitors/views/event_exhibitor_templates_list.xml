@@ -7,6 +7,7 @@
         <t t-call="website_event_exhibitors.exhibitors_register_main"/>
     </t>
     <t t-else="" t-call="web.basic_layout">
+        <t t-set="title" t-value="event.name" />
         <t t-call="website_event_exhibitors.exhibitors_register_main"/>
     </t>
 </template>

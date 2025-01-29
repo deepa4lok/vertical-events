@@ -15,7 +15,7 @@
         'website_event_track_exhibitor', 'website_sale',
         'website_event_track', 'google_recaptcha',
         'website_jitsi', 'crm', 'sale_crm', 'brand', 'sale_brand',
-        'sale_order_type', "analytic"
+        'sale_order_type', "analytic", "sale_operating_unit",
     ],
     'data': [
         'security/security.xml',
