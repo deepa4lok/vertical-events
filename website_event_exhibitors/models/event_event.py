@@ -23,6 +23,12 @@ class EventEvent(models.Model):
                                           check_company=True)
     default_product_ids = fields.Many2many('product.product', string="Default Products")
 
+    show_styp = fields.Boolean('Show Stand Type', default=True)
+    show_swd = fields.Boolean('Show Stand Width / Depth', default=True)
+    show_theme = fields.Boolean('Show Theme', default=True)
+    show_stxtb = fields.Boolean('Show Textboard', default=True)
+    show_scons = fields.Boolean('Show Stand Construction', default=True)
+
     @api.depends('event_type_id', 'website_menu', 'exhibitor_register_menu')
     def _compute_exhibitor_register_menu(self):
         for event in self:

@@ -14,6 +14,8 @@ class StandType(models.Model):
 
     name = fields.Char('Stand Type', required=True)
     sequence = fields.Integer(default=10)
+    event_ids = fields.Many2many('event.event', 'event_stand_type_rel', 'theme_id', 'event_id'
+                                 , string="Events", ondelete='restrict')
 
 
 class ExhibitionTheme(models.Model):
@@ -22,7 +24,7 @@ class ExhibitionTheme(models.Model):
 
     name = fields.Char('Exhibition Theme', required=True)
     sequence = fields.Integer(default=10)
-    event_ids = fields.Many2many('event.event', string='Events')
+    # event_ids = fields.Many2many('event.event', string='Events') # Seems repeatitive
     event_ids = fields.Many2many('event.event', 'event_theme_rel', 'theme_id', 'event_id', string="Events", ondelete='restrict')
 
 
