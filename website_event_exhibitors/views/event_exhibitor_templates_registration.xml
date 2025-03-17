@@ -70,7 +70,7 @@
                              </label>
                              <div class="col-sm">
                                  <input type="tel" t-attf-name="#{counter}-phone" class="form-control s_website_form_input" pattern="[+]{1}[0-9]{11}$"
-                                        placeholder="+31XXXXXXXXX" t-att-value="phone" required="1" id="yn5"/>
+                                        placeholder="+31XXXXXXXXX" t-att-value="phone" id="yn5"/>
                              </div>
                          </div>
                      </div>
