@@ -34,6 +34,8 @@ class ExhibitorRegisterController(EventTrackController):
 
         Themes = request.env['event.exhibition.theme'].sudo().search([('event_ids', 'in', [event.id])])
 
+        Loc = request.env['event.location'].sudo().search([('event_ids', 'in', [event.id])])
+
         return {
             # event information
             'event': event,
@@ -50,6 +52,7 @@ class ExhibitorRegisterController(EventTrackController):
 
             'stand_types': StandTypes,
             'exhibition_themes': Themes,
+            'locations': Loc,
         }
 
 

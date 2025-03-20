@@ -28,6 +28,7 @@ class EventEvent(models.Model):
     show_theme = fields.Boolean('Show Theme', default=True)
     show_stxtb = fields.Boolean('Show Textboard', default=True)
     show_scons = fields.Boolean('Show Stand Construction', default=True)
+    show_loc = fields.Boolean('Show Location', default=True)
 
     @api.depends('event_type_id', 'website_menu', 'exhibitor_register_menu')
     def _compute_exhibitor_register_menu(self):

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!--
+        Event Location
+    -->
+    <record id="event_location_view_tree" model="ir.ui.view">
+        <field name="name">Location</field>
+        <field name="model">event.location</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" string="Event Location">
+                <field name="sequence" widget='handle'/>
+                <field name="name"/>
+                <field name="event_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="event_location_action" model="ir.actions.act_window">
+        <field name="name">Location</field>
+        <field name="res_model">event.location</field>
+    </record>
+
+
+    <menuitem id="menu_event_location"
+        name="Location"
+        action="event_location_action"
+        parent="event.menu_event_configuration"
+        groups="event.group_event_manager"
+        sequence="42"/>
+
+</odoo>
