@@ -131,16 +131,28 @@
                      </div>
 
 
-                     <div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required" data-type="text" data-name="Field"
-                        t-if="event.show_scons == True">
+                     <div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required" data-type="text" data-name="Field">
                          <div class="row p-2 s_col_no_resize s_col_no_bgcolor">
-                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn6">
+                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn6"
+                                t-if="event.show_scons == True">
                                  <span class="s_website_form_label_content">Stand Construction</span>
                              </label>
-                             <div class="col-sm">
+                             <div class="col-sm" t-if="event.show_scons == True">
                                  <select class="form-control" t-attf-name="#{counter}-stand_construction" id="yn12">
                                     <option value="">Exclusief</option>
                                     <option value="True">Inclusief</option>
+                                 </select>
+                             </div>
+
+                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn15"
+                                t-if="event.show_loc == True">
+                                 <span class="s_website_form_label_content">Location</span>
+                             </label>
+                             <div class="col-sm" t-if="event.show_loc == True">
+                                 <select class="form-control" t-attf-name="#{counter}-location_id" id="yn15">
+                                    <t t-foreach="locations" t-as="loc">
+                                        <option t-attf-value="#{loc.id}"><t t-esc="loc.name"/></option>
+                                    </t>
                                  </select>
                              </div>
                          </div>

@@ -33,6 +33,7 @@
                         <group>
                             <field name="show_theme"/>
                             <field name="show_stxtb"/>
+                            <field name="show_loc"/>
                         </group>
                     </group>
 
