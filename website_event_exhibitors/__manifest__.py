@@ -33,7 +33,7 @@
         "views/sale_report_template.xml",
         'views/website_sale.xml',
         "views/invoice_report_template.xml",
-
+        "views/res_partner.xml",
         'views/menu_views.xml',        
     ],
     'demo': [
