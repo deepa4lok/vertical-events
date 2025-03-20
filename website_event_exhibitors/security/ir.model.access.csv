@@ -3,3 +3,5 @@ access_event_stand_type_manager,access_event_stand_type,model_event_stand_type,e
 access_event_stand_type_user,access_event_stand_type,model_event_stand_type,,1,0,0,0
 access_event_exhibition_theme_manager,access_event_exhibition_theme,model_event_exhibition_theme,event.group_event_manager,1,1,1,1
 access_event_exhibition_theme_user,access_event_exhibition_theme,model_event_exhibition_theme,,1,0,0,0
+access_event_location_manager,access_event_location,model_event_location,event.group_event_manager,1,1,1,1
+access_event_location_user,access_event_location,model_event_location,,1,0,0,0

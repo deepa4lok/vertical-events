@@ -75,6 +75,11 @@ msgstr ""
 
 #. module: website_event_exhibitors
 #: model_terms:ir.ui.view,arch_db:website_event_exhibitors.exhibitor_registration_template
+msgid "<span class=\"s_website_form_label_content\">Location</span>"
+msgstr "<span class=\"s_website_form_label_content\">Locatie</span>"
+
+#. module: website_event_exhibitors
+#: model_terms:ir.ui.view,arch_db:website_event_exhibitors.exhibitor_registration_template
 msgid ""
 "<span class=\"s_website_form_label_content\">Mobile</span>\n"
 "                                 <span class=\"s_website_form_mark\"> *</span>"
@@ -733,6 +738,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type__sequence
 msgid "Sequence"
 msgstr ""
+
+#. module: website_event_exhibitors
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_event__show_loc
+msgid "Show Location"
+msgstr "Toon Locatie"
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_event__show_scons
