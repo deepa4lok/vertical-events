@@ -34,7 +34,7 @@
             </xpath>
 
             <xpath expr="//button[@name='action_confirm'][1]" position="after">
-                <button name="action_submit" string="Submit for Approval" type="object" states="draft,sent" group="event.group_event_user"/>
+                <button name="action_submit" string="Submit for Approval" type="object" states="draft,sent" groups="event.group_event_user"/>
                 <button name="action_approve1" string="Approve Quotation"
                             states="submitted" type="object" class="oe_highlight"
 							groups="website_event_exhibitors.group_event_manager_ver"/>
@@ -43,6 +43,25 @@
 							groups="website_event_exhibitors.group_event_manager_ver"/>
                 <field name="event_max_discount" invisible="1"/>
             </xpath>
+            <xpath expr="//button[@name='action_confirm'][1]" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_draft']" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][1]" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][2]" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+
 
             <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
                 <field name="event_price_edit" invisible="1"/>

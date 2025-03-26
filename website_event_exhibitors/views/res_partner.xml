@@ -4,12 +4,15 @@
     <field name="model">res.partner</field>
     <field name="inherit_id" ref="base.view_partner_form" />
     <field name="arch" type="xml">
+      <button name="action_view_sale_order" position="attributes">
+        <attribute name="attrs">{'invisible': [('sale_order_count', '=', 0)]}</attribute>
+      </button>
       <button name="action_view_sale_order" position="after">
         <button
           class="oe_stat_button"
           type="object"
           name="action_view_event_order"
-          groups="website_event_exhibitors.group_event_manager_ver"
+          groups="event.group_event_user"
           icon="fa-glass"
         >
           <field string="Event Sales" name="event_order_count" widget="statinfo" />
