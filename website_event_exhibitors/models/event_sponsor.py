@@ -10,20 +10,35 @@ _logger = logging.getLogger(__name__)
 
 class StandType(models.Model):
     _name = 'event.stand.type'
+    _description = 'Event Stand Type'
     _order = 'sequence'
 
     name = fields.Char('Stand Type', required=True)
     sequence = fields.Integer(default=10)
+    event_ids = fields.Many2many('event.event', 'event_stand_type_rel', 'type_id', 'event_id'
+                                 , string="Events", ondelete='restrict')
 
 
 class ExhibitionTheme(models.Model):
     _name = 'event.exhibition.theme'
+    _description = 'Event Exhibition Theme'
     _order = 'sequence'
 
     name = fields.Char('Exhibition Theme', required=True)
     sequence = fields.Integer(default=10)
-    event_ids = fields.Many2many('event.event', string='Events')
+    # event_ids = fields.Many2many('event.event', string='Events') # Seems repeatitive
     event_ids = fields.Many2many('event.event', 'event_theme_rel', 'theme_id', 'event_id', string="Events", ondelete='restrict')
+
+class Location(models.Model):
+    _name = 'event.location'
+    _description = 'Event Location'
+    _order = 'sequence'
+
+    name = fields.Char('Location', required=True)
+    sequence = fields.Integer(default=10)
+    event_ids = fields.Many2many('event.event', 'event_location_rel', 'location_id', 'event_id'
+                                 , string="Events", ondelete='restrict')
+
 
 
 class Sponsor(models.Model):
@@ -55,6 +70,7 @@ class Sponsor(models.Model):
     theme_id = fields.Many2one('event.exhibition.theme', string='Theme of the Exhibition', ondelete='set null')
     textboard = fields.Char("Textboard", size=30)
     website_id = fields.Many2one('website', string='Website', ondelete='restrict')
+    location_id = fields.Many2one('event.location', string='Location', ondelete='set null')
 
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -70,7 +86,8 @@ class Sponsor(models.Model):
     def _get_website_registration_allowed_fields(self):
         return {'name', 'phone', 'email', 'mobile', 'event_id', 'partner_id', 'stand_number'
                 , 'stand_width', 'stand_depth', 'remarks', 'stand_type_id', 'partner_company'
-                , 'prod_remarks', 'theme_id', 'textboard', 'partner_contact', 'website_id', 'stand_construction'}
+                , 'prod_remarks', 'theme_id', 'textboard', 'partner_contact', 'website_id', 'stand_construction'
+                , 'location_id'}
 
     @api.depends('stand_width', 'stand_depth')
     def _compute_surface_area(self):

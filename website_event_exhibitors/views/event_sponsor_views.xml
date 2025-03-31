@@ -42,6 +42,7 @@
                                 <field name="stand_width" required="1"/>
                                 <field name="stand_depth" required="1"/>
                                 <field name="stand_surface_area"/>
+                                <field name="location_id"/>
                             </group>
                             <group>
                                 <field name="lead_id" invisible="1"/>

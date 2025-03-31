@@ -20,6 +20,26 @@
                 <field name="exhibitor_register_menu"/>
             </xpath>
 
+            <xpath expr="//page[@name='event_notes']" position="after">
+                <page string="Exhibitor Registration" name="event_notes"
+                      attrs="{'invisible': [('exhibitor_register_menu','!=', True)]}">
+                    <label for="show_styp" string="set 'True' for the following fields to be displayed on Exhibitor Registration page."/>
+                    <group>
+                        <group>
+                            <field name="show_styp"/>
+                            <field name="show_swd"/>
+                            <field name="show_scons"/>
+                        </group>
+                        <group>
+                            <field name="show_theme"/>
+                            <field name="show_stxtb"/>
+                            <field name="show_loc"/>
+                        </group>
+                    </group>
+
+                </page>
+            </xpath>
+
         </field>
     </record>
 
@@ -42,6 +62,26 @@
                     <field name="default_product_ids" domain="[('website_id', '=', website_id)]"/>
                 </page>
             </xpath>
+
+
+<!--            <xpath expr="//page[@name='event_notes']" position="after">-->
+<!--                <page string="Exhibitor Registration" name="event_notes"-->
+<!--                      attrs="{'invisible': [('exhibitor_register_menu','=', True)]}">-->
+<!--                    <label for="show_styp" string="Configure following to be displayed / hide it on Exhibitor Registration form."/>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="show_styp"/>-->
+<!--                            <field name="show_swd"/>-->
+<!--                            <field name="show_scons"/>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            <field name="show_theme"/>-->
+<!--                            <field name="show_stxtb"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+
+<!--                </page>-->
+<!--            </xpath>-->
         </field>
     </record>
 </odoo>

@@ -70,12 +70,12 @@
                              </label>
                              <div class="col-sm">
                                  <input type="tel" t-attf-name="#{counter}-phone" class="form-control s_website_form_input" pattern="[+]{1}[0-9]{11}$"
-                                        placeholder="+31XXXXXXXXX" t-att-value="phone" required="1" id="yn5"/>
+                                        placeholder="+31XXXXXXXXX" t-att-value="phone" id="yn5"/>
                              </div>
                          </div>
                      </div>
 
-                     <div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required" data-type="number" data-name="Field">
+                     <div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required" data-type="number" data-name="Field" t-if="event.show_swd == True">
                          <div class="row p-2 s_col_no_resize s_col_no_bgcolor">
                              <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn4">
                                  <span class="s_website_form_label_content">Stand Width <small>(mts)</small></span>
@@ -104,10 +104,11 @@
 
                      <div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required" data-type="number" data-name="Field">
                          <div class="row p-2 s_col_no_resize s_col_no_bgcolor">
-                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn6">
+                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn6"
+                                    t-if="event.show_styp == True">
                                  <span class="s_website_form_label_content">Stand Type</span>
                              </label>
-                             <div class="col-sm">
+                             <div class="col-sm" t-if="event.show_styp == True">
                                  <select class="form-control" t-attf-name="#{counter}-stand_type_id" id="yn6">
                                     <t t-foreach="stand_types" t-as="stype">
                                         <option t-attf-value="#{stype.id}"><t t-esc="stype.name"/></option>
@@ -115,10 +116,11 @@
                                  </select>
                              </div>
 
-                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn10">
+                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn10"
+                                    t-if="event.show_theme == True">
                                  <span class="s_website_form_label_content">Theme of the Exhibition</span>
                              </label>
-                             <div class="col-sm">
+                             <div class="col-sm" t-if="event.show_theme == True">
                                  <select class="form-control" t-attf-name="#{counter}-theme_id" id="yn10">
                                     <t t-foreach="exhibition_themes" t-as="theme">
                                         <option t-attf-value="#{theme.id}"><t t-esc="theme.name"/></option>
@@ -131,13 +133,26 @@
 
                      <div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required" data-type="text" data-name="Field">
                          <div class="row p-2 s_col_no_resize s_col_no_bgcolor">
-                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn6">
+                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn6"
+                                t-if="event.show_scons == True">
                                  <span class="s_website_form_label_content">Stand Construction</span>
                              </label>
-                             <div class="col-sm">
+                             <div class="col-sm" t-if="event.show_scons == True">
                                  <select class="form-control" t-attf-name="#{counter}-stand_construction" id="yn12">
                                     <option value="">Exclusief</option>
                                     <option value="True">Inclusief</option>
+                                 </select>
+                             </div>
+
+                             <label class="col-form-label col-2 col-sm-auto s_website_form_label " style="width: 200px" for="yn15"
+                                t-if="event.show_loc == True">
+                                 <span class="s_website_form_label_content">Location</span>
+                             </label>
+                             <div class="col-sm" t-if="event.show_loc == True">
+                                 <select class="form-control" t-attf-name="#{counter}-location_id" id="yn15">
+                                    <t t-foreach="locations" t-as="loc">
+                                        <option t-attf-value="#{loc.id}"><t t-esc="loc.name"/></option>
+                                    </t>
                                  </select>
                              </div>
                          </div>
@@ -168,7 +183,8 @@
                      </div>
 
 
-                     <div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required" data-type="textarea" data-name="Field">
+                     <div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required" data-type="textarea" data-name="Field"
+                        t-if="event.show_stxtb == True">
                          <div class="row p-2 s_col_no_resize s_col_no_bgcolor">
                              <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="yn11">
                                  <span class="s_website_form_label_content">Textboard</span>
