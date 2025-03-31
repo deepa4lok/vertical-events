@@ -9,6 +9,7 @@
         <field name="name">sale_order.form.inherited</field>
         <field name="model">sale.order</field>
         <field name="mode">primary</field>
+        <field name="priority">20</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
             <xpath expr="//header/field[@name='state']" position="attributes">
@@ -33,8 +34,7 @@
             </xpath>
 
             <xpath expr="//button[@name='action_confirm'][1]" position="after">
-                <button name="action_submit" string="Submit for Approval" type="object" states="draft,sent"
-                        groups="event.group_event_user"/>
+                <button name="action_submit" string="Submit for Approval" type="object" states="draft,sent" groups="event.group_event_user"/>
                 <button name="action_approve1" string="Approve Quotation"
                             states="submitted" type="object" class="oe_highlight"
 							groups="website_event_exhibitors.group_event_manager_ver"/>
@@ -43,6 +43,25 @@
 							groups="website_event_exhibitors.group_event_manager_ver"/>
                 <field name="event_max_discount" invisible="1"/>
             </xpath>
+            <xpath expr="//button[@name='action_confirm'][1]" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_draft']" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][1]" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][2]" position="attributes">
+                <attribute name="groups">event.group_event_manager</attribute>
+            </xpath>
+
 
             <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
                 <field name="event_price_edit" invisible="1"/>
@@ -64,40 +83,14 @@
 <!--            <xpath expr="//field[@name='order_line']/form//field[@name='discount']" position="attributes">-->
 <!--                <attribute name="context">{'event_discount_update':1}</attribute>-->
 <!--            </xpath>-->
-        </field>
-    </record>
-
-
-    <!--
-        Sale Order (website_sale)
-    -->
-    <record id="view_order_form2" model="ir.ui.view">
-        <field name="name">sale_order.form.inherited.website</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="website_sale.sale_order_view_form" />
-        <field name="arch" type="xml">
+            <xpath expr="//field[@name='brand_id']" position="after">
+                <field name="event_id" domain="[('brand_id', '=', brand_id)]"/>
+            </xpath>
             <xpath expr="//field[@name='website_id']" position="attributes">
                 <attribute name="force_save">1</attribute>
             </xpath>
         </field>
     </record>
-
-
-
-    <!--
-        Sale Order (brand)
-    -->
-    <record id="view_order_form_brand_inherit" model="ir.ui.view">
-        <field name="name">sale_order.form.brand.inherited</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale_brand.view_order_form_brand" />
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='brand_id']" position="after">
-                <field name="event_id" domain="[('brand_id', '=', brand_id)]"/>
-            </xpath>
-        </field>
-    </record>
-
 
     <!--
             Event Sales > Quotations
