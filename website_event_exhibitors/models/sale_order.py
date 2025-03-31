@@ -200,3 +200,18 @@ class SaleOrderLine(models.Model):
         if self.order_id.type_id.id == Event_SOT:
             self.discount = 0
             self.price_subtotal_disc_amt = 0
+
+    def _prepare_invoice_line(self, **optional_values):
+        values = super()._prepare_invoice_line(**optional_values)
+        if self.order_id.event_id:
+            event = self.order_id.event_id
+            event = event.with_context(tz=event.date_tz)
+            if 'from_date' in self.env['account.move.line']._fields:
+                values['from_date'] = fields.Datetime.context_timestamp(
+                    event, event.date_begin,
+                ).date()
+            if 'to_date' in self.env['account.move.line']._fields:
+                values['to_date'] = fields.Datetime.context_timestamp(
+                    event, event.date_end,
+                ).date()
+        return values
