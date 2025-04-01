@@ -341,3 +341,14 @@ class SaleOrderLine(models.Model):
         if self.order_id.type_id.id == Event_SOT:
             self.discount = 0
             self.price_subtotal_disc_amt = 0
+
+
+    def _prepare_invoice_line(self, **optional_values):
+        res = super(SaleOrderLine, self)._prepare_invoice_line(**optional_values)
+        Event_SOT = self.env.ref('website_event_exhibitors.event_sale_type').id
+
+        if self.order_id.type_id.id == Event_SOT:
+            res['discount'] = 0 # Nullify Disc %
+            res['price_unit'] = self.actual_unit_price
+
+        return res
