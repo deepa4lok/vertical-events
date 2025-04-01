@@ -260,6 +260,37 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
+    # @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'price_subtotal_disc_amt')
+    @api.depends( 'discount', 'price_unit', 'tax_id', 'price_subtotal_disc_amt')
+    def _compute_amount(self):
+        """
+        Compute the amounts of the SO line.
+        """
+        ctx = self.env.context
+        EOT = self.env.ref('website_event_exhibitors.event_sale_type').id
+        super(SaleOrderLine, self)._compute_amount()
+
+        for line in self.filtered(lambda record: record.order_id.type_id.id == EOT):
+
+            # price = round(line.price_unit * (1 - (line.discount or 0.0) / 100.0), 5)
+            #
+            # taxes = line.tax_id.compute_all(price, line.order_id.currency_id, 1,
+            #                                 product=line.product_id, partner=line.order_id.partner_shipping_id)
+            # price_subtotal = taxes['total_excluded']
+            #
+            # # if line.price_subtotal_disc_amt:
+            # if 'price_subtotal_disc_amt_update' in ctx:
+            #     line.discount = round((1.0 - float(line.price_subtotal_disc_amt) / (
+            #                 float(price_subtotal) * float(line.product_uom_qty) or 1)) * 100.0, 5)
+            # else:
+            #     line.price_subtotal_disc_amt = price_subtotal
+
+            if not line.discount:
+                line.actual_unit_price = line.price_unit
+                line.price_subtotal_disc_amt = line.price_subtotal
+            else:
+                line.actual_unit_price = float(line.price_subtotal_disc_amt) / (float(line.product_uom_qty) or 1)
+
     @api.depends('product_id', 'price_subtotal')
     def _compute_event_price_edit(self):
         EOT = self.env.ref('website_event_exhibitors.event_sale_type').id
@@ -303,6 +334,8 @@ class SaleOrderLine(models.Model):
 
     price_subtotal_disc_amt = fields.Monetary(string='Subtotal after discount')
     event_price_edit = fields.Boolean(compute='_compute_event_price_edit', string='Event Price Editable')
+    actual_unit_price = fields.Float(compute='_compute_amount', string='Actual Unit Price', digits='Product Price',
+                                     default=0.0, readonly=True)
 
     # @api.onchange('price_subtotal_disc_amt', 'product_uom_qty', 'price_unit', 'discount')
     # def _onchange_subtotal_discount(self):
