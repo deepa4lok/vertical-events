@@ -310,7 +310,8 @@ class SaleOrderLine(models.Model):
                     'price_subtotal_disc_amt': subtotal
                 })
 
-            price = round(line.price_unit * (1 - (line.discount or 0.0) / 100.0), 5)
+            # price = round(line.price_unit * (1 - (line.discount or 0.0) / 100.0), 5)
+            price = line.actual_unit_price
 
             taxes = line.tax_id.compute_all(
                 price,
