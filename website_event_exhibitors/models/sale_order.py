@@ -384,5 +384,6 @@ class SaleOrderLine(models.Model):
         if self.order_id.type_id.id == Event_SOT:
             res['discount'] = 0 # Nullify Disc %
             res['price_unit'] = self.actual_unit_price
+            res['lock_prices'] = True
 
         return res

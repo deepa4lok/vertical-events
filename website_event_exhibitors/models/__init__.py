@@ -5,6 +5,7 @@ from . import res_partner
 from . import crm_lead
 from . import product
 from . import sale_order
+from . import account_invoice
 from . import event_sponsor
 from . import event_event
 from . import event_type
