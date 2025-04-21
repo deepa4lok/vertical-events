@@ -35,7 +35,7 @@
         'views/website_sale.xml',
         "reports/invoice_report_template.xml",
         'views/account_invoice_views.xml',
-
+        "views/res_partner.xml",
         'views/menu_views.xml',        
     ],
     'demo': [
