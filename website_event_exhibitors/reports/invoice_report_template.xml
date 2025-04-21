@@ -23,8 +23,14 @@
         <span t-esc="round(line.quantity)"/>
     </xpath>
 
+    <xpath expr="//span[@t-field='line.price_unit']" position="replace">
+        <span class="text-nowrap" t-field="line.price_unit" t-if="not line.so_line_id"/>
+        <span class="text-nowrap" t-field="line.so_line_id.price_unit" t-if="line.so_line_id"/>
+    </xpath>
+
     <xpath expr="//span[@t-field='line.discount']" position="replace">
-        <span class="text-nowrap" style="color:blue" t-field="line.discount"/>
+        <span class="text-nowrap" style="color:blue" t-field="line.discount" t-if="not line.so_line_id"/>
+        <span class="text-nowrap" style="color:blue" t-field="line.so_line_id.discount" t-if="line.so_line_id"/>
     </xpath>
 
     <xpath expr="//tr[@class='border-black o_subtotal']" position="replace">
