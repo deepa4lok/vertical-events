@@ -72,5 +72,33 @@
                 <menuitem id="menu_product_category_action_form4" name="Attributes"
                       parent="menu_products_subconfig4" action="product.attribute_action" sequence="2"/>
 
+
+
+
+    <!--
+        Menu: Events > Events - rebased
+    -->
+    <menuitem name="Events"
+        id="menu_event_sub_menu"
+        sequence="1"
+        parent="event.event_main_menu"
+        groups="event.group_event_user"/>
+
+    <menuitem name="Events"
+        id="event.menu_event_event"
+        sequence="1"
+        parent="website_event_exhibitors.menu_event_sub_menu"
+        action="event.action_event_view"
+        groups="event.group_event_user"/>
+
+    <menuitem name="Event Exhibitors"
+        id="menu_event_exhibitors"
+        sequence="2"
+        action="event_sponsor_action_all"
+        parent="website_event_exhibitors.menu_event_sub_menu"/>
+
+
+
+
     </data>
 </openerp>
