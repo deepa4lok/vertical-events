@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-14 03:13+0000\n"
-"PO-Revision-Date: 2025-03-14 03:13+0000\n"
+"POT-Creation-Date: 2025-04-21 10:22+0000\n"
+"PO-Revision-Date: 2025-04-21 10:22+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgstr "<span class=“s_website_form_label_content”>Opmerkingen</span>"
 #. module: website_event_exhibitors
 #: model_terms:ir.ui.view,arch_db:website_event_exhibitors.exhibitor_registration_template
 msgid "<span class=\"s_website_form_label_content\">Stand Construction</span>"
-msgstr "<span class=\"s_website_form_label_content\">Standbouw</span>"
+msgstr "<span class=“s_website_form_label_content”>Standbouw</span>"
 
 #. module: website_event_exhibitors
 #: model_terms:ir.ui.view,arch_db:website_event_exhibitors.exhibitor_registration_template
@@ -160,9 +160,8 @@ msgid ""
 "<span class=\"s_website_form_label_content\">Your Products or Services</span>\n"
 "                                 <span class=\"s_website_form_mark\"> *</span>"
 msgstr ""
-"<span class=\"s_website_form_label_content\">Uw producten of "
-"diensten</span>\n"
-"                                 <span class=\"s_website_form_mark\"> *</span>"
+"<span class=“s_website_form_label_content”>Uw producten of diensten</span>\n"
+"                                 <span class=“s_website_form_mark”> *</span>"
 
 #. module: website_event_exhibitors
 #: model_terms:ir.ui.view,arch_db:website_event_exhibitors.exhibitor_registration_template
@@ -171,7 +170,7 @@ msgid ""
 " (3x3).</small></span>"
 msgstr ""
 "<span><small>Let op: De minimum standruimte is 3 meter breed en 3 meter diep"
-"  (3x3).</small></span>"
+" (3x3).</small></span>"
 
 #. module: website_event_exhibitors
 #: model_terms:ir.ui.view,arch_db:website_event_exhibitors.exhibitors_register_main
@@ -183,6 +182,11 @@ msgstr "<span>Informatie aanvragen </span>"
 #: model_terms:ir.ui.view,arch_db:website_event_exhibitors.report_saleorder_document_inherit
 msgid "<strong>Subtotal ex. vat</strong>"
 msgstr "<strong>Subtotaal excl. BTW</strong>"
+
+#. module: website_event_exhibitors
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_sale_order_line__actual_unit_price
+msgid "Actual Unit Price"
+msgstr "Stuksprijs"
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_event__analytic_account_id
@@ -261,12 +265,14 @@ msgstr ""
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_exhibition_theme__create_uid
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location__create_uid
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type__create_uid
 msgid "Created by"
 msgstr "Aangemaakt door"
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_exhibition_theme__create_date
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location__create_date
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type__create_date
 msgid "Created on"
 msgstr "Aangemaakt op"
@@ -309,9 +315,11 @@ msgid "Depth of Stand in mtrs"
 msgstr "Diepte van de stand in meters"
 
 #. module: website_event_exhibitors
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_crm_lead__display_name
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_event__display_name
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_exhibition_theme__display_name
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location__display_name
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_sponsor__display_name
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type__display_name
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_type__display_name
@@ -356,9 +364,25 @@ msgid "Event"
 msgstr "Evenement"
 
 #. module: website_event_exhibitors
+#: model:ir.model,name:website_event_exhibitors.model_event_exhibition_theme
+msgid "Event Exhibition Theme"
+msgstr ""
+
+#. module: website_event_exhibitors
 #: model_terms:ir.ui.view,arch_db:website_event_exhibitors.event_exhibition_theme_view_tree
 msgid "Event Exhibition Themes"
 msgstr "Event Beurs Thema’s"
+
+#. module: website_event_exhibitors
+#: model:ir.ui.menu,name:website_event_exhibitors.menu_event_exhibitors
+msgid "Event Exhibitors"
+msgstr "Exposanten"
+
+#. module: website_event_exhibitors
+#: model:ir.model,name:website_event_exhibitors.model_event_location
+#: model_terms:ir.ui.view,arch_db:website_event_exhibitors.event_location_view_tree
+msgid "Event Location"
+msgstr ""
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_sale_order__event_max_discount
@@ -371,12 +395,20 @@ msgid "Event Order"
 msgstr ""
 
 #. module: website_event_exhibitors
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_res_brand__event_order_count
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_res_partner__event_order_count
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_res_users__event_order_count
+msgid "Event Order Count"
+msgstr ""
+
+#. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_sale_order_line__event_price_edit
 msgid "Event Price Editable"
 msgstr "Event prijs aanpasbaar"
 
 #. module: website_event_exhibitors
 #: model:ir.ui.menu,name:website_event_exhibitors.event_sale_menu_root
+#: model_terms:ir.ui.view,arch_db:website_event_exhibitors.view_partner_form
 msgid "Event Sales"
 msgstr ""
 
@@ -386,14 +418,15 @@ msgid "Event Sponsor"
 msgstr "Exposant"
 
 #. module: website_event_exhibitors
+#: model:ir.model,name:website_event_exhibitors.model_event_stand_type
 #: model_terms:ir.ui.view,arch_db:website_event_exhibitors.event_stand_type_view_tree
 msgid "Event Stand Type"
-msgstr "Evenement Standsoort"
+msgstr "Event Standsoort"
 
 #. module: website_event_exhibitors
 #: model:ir.model,name:website_event_exhibitors.model_event_type
 msgid "Event Template"
-msgstr "Evenementsjabloon"
+msgstr "Event sjabloon"
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,help:website_event_exhibitors.field_crm_lead__event_id
@@ -402,9 +435,11 @@ msgstr "Gebeurtenis die de regel activeert die deze lead heeft gemaakt."
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_exhibition_theme__event_ids
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location__event_ids
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type__event_ids
+#: model:ir.ui.menu,name:website_event_exhibitors.menu_event_sub_menu
 msgid "Events"
-msgstr "Evenement"
+msgstr "Event"
 
 #. module: website_event_exhibitors
 #: model_terms:ir.ui.view,arch_db:website_event_exhibitors.event_sponsor_view_search
@@ -498,9 +533,11 @@ msgid "Exhibitors Register Menus"
 msgstr "Exposant registratie menu’s"
 
 #. module: website_event_exhibitors
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_account_move_line__id
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_crm_lead__id
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_event__id
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_exhibition_theme__id
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location__id
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_sponsor__id
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type__id
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_type__id
@@ -521,9 +558,16 @@ msgid "Include Stand Construction"
 msgstr "Inclusief Standbouw"
 
 #. module: website_event_exhibitors
+#: model:ir.model,name:website_event_exhibitors.model_account_move_line
+msgid "Journal Item"
+msgstr "Boekingsregel"
+
+#. module: website_event_exhibitors
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_account_move_line____last_update
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_crm_lead____last_update
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_event____last_update
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_exhibition_theme____last_update
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location____last_update
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_sponsor____last_update
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type____last_update
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_type____last_update
@@ -539,12 +583,14 @@ msgstr "Laatst gewijzigd op"
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_exhibition_theme__write_uid
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location__write_uid
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type__write_uid
 msgid "Last Updated by"
 msgstr "Laatst gewijzigd door"
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_exhibition_theme__write_date
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location__write_date
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type__write_date
 msgid "Last Updated on"
 msgstr "Laatst gewijzigd op"
@@ -561,6 +607,19 @@ msgstr ""
 #: model:ir.model,name:website_event_exhibitors.model_crm_lead
 msgid "Lead/Opportunity"
 msgstr "Lead/Verkoopkans"
+
+#. module: website_event_exhibitors
+#: model:ir.actions.act_window,name:website_event_exhibitors.event_location_action
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location__name
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_sponsor__location_id
+#: model:ir.ui.menu,name:website_event_exhibitors.menu_event_location
+msgid "Location"
+msgstr ""
+
+#. module: website_event_exhibitors
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_account_move_line__lock_prices
+msgid "Lock"
+msgstr ""
 
 #. module: website_event_exhibitors
 #: model:res.groups,name:website_event_exhibitors.group_event_manager_ver
@@ -638,7 +697,7 @@ msgstr "Productcategorieën"
 #. module: website_event_exhibitors
 #: model:ir.model,name:website_event_exhibitors.model_product_template
 msgid "Product Template"
-msgstr "Productsjabloon"
+msgstr "Product"
 
 #. module: website_event_exhibitors
 #: model:ir.actions.act_window,name:website_event_exhibitors.product_normal_action_sell_event
@@ -735,6 +794,7 @@ msgstr ""
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_exhibition_theme__sequence
+#: model:ir.model.fields,field_description:website_event_exhibitors.field_event_location__sequence
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_stand_type__sequence
 msgid "Sequence"
 msgstr ""
@@ -799,7 +859,7 @@ msgstr "Standsoort"
 #: model:ir.actions.act_window,name:website_event_exhibitors.event_stand_type_action
 #: model:ir.ui.menu,name:website_event_exhibitors.menu_event_stand_type
 msgid "Stand Types"
-msgstr "Stand soorten"
+msgstr "Standsoorten"
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_sponsor__state
@@ -836,7 +896,7 @@ msgstr "Oppervlakte in m2"
 #. module: website_event_exhibitors
 #: model:ir.model.fields,help:website_event_exhibitors.field_event_sponsor__stand_surface_area
 msgid "Surface Area for Stand in Sq mtrs"
-msgstr "Oppervlakte van de Stand in m2"
+msgstr "Oppervlakte van de stand in m2"
 
 #. module: website_event_exhibitors
 #: model:ir.model.fields,field_description:website_event_exhibitors.field_event_sponsor__textboard
@@ -925,16 +985,6 @@ msgid ""
 "\t\t\t\ta consumable or a service you offer to customers.\n"
 "\t\t\t\tThe product form contains information to simplify the sale process:\n"
 "\t\t\t\tprice, notes in the quotation, accounting data, procurement methods, etc."
-msgstr ""
-
-#. module: website_event_exhibitors
-#: model:ir.model,name:website_event_exhibitors.model_event_exhibition_theme
-msgid "event.exhibition.theme"
-msgstr ""
-
-#. module: website_event_exhibitors
-#: model:ir.model,name:website_event_exhibitors.model_event_stand_type
-msgid "event.stand.type"
 msgstr ""
 
 #. module: website_event_exhibitors
