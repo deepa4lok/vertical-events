@@ -21,7 +21,7 @@ class Partner(models.Model):
         for this in self:
             this.event_order_count = SaleOrder.search_count(
                 [
-                    ("partner_id", "=", this.id),
+                    ("partner_id", "child_of", this.id),
                     ("type_id", "=", order_type.id),
                 ]
             )
@@ -43,7 +43,7 @@ class Partner(models.Model):
         )
         order_type = self.env.ref('website_event_exhibitors.event_sale_type')
         result["domain"] = [
-            ("partner_id", "in", self.ids),
+            ("partner_id", "child_of", self.ids),
             ("type_id", "=", order_type.id),
         ]
         result["context"] = dict(
