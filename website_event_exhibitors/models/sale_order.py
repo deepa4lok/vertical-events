@@ -208,9 +208,9 @@ class SaleOrderLine(models.Model):
                 })
 
     price_subtotal_disc_amt = fields.Monetary(string='Subtotal after discount')
-    event_price_edit = fields.Boolean(compute='_compute_event_price_edit', string='Event Price Editable')
+    event_price_edit = fields.Boolean(compute='_compute_event_price_edit', string='Event Price Editable', store=True)
     actual_unit_price = fields.Float(compute='_compute_amount', string='Actual Unit Price', digits='Product Price',
-                                     default=0.0, readonly=True)
+                                     default=0.0, readonly=True, store=True)
 
     @api.onchange('price_subtotal_disc_amt', 'product_uom_qty', 'price_unit', 'discount')
     def _onchange_subtotal_discount(self):
