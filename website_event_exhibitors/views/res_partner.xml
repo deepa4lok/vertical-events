@@ -25,4 +25,25 @@
       </button>
     </field>
   </record>
+
+  <record id="sale.crm_lead_partner_kanban_view" model="ir.ui.view">
+      <field name="groups_id" eval="[(4, ref('event.group_event_user'))]"/>
+  </record>
+
+  <record id="crm_lead_partner_kanban_view" model="ir.ui.view">
+      <field name="model">res.partner</field>
+      <field name="groups_id" eval="[(4, ref('event.group_event_user'))]"/>
+      <field name="inherit_id" ref="sale.crm_lead_partner_kanban_view" />
+      <field name="arch" type="xml">
+          <field name="sale_order_count" position="after">
+              <field name="event_order_count" />
+          </field>
+          <xpath expr="//t[@t-esc='record.sale_order_count.value']/.." position="after">
+              <span t-if="record.event_order_count.value > 0" class="badge badge-pill">
+                  <i class="fa fa-fw fa-glass" role="img" aria-label="Event Sales" title="Event Sales"/><t t-esc="record.event_order_count.value"/>
+              </span>
+          </xpath>
+      </field>
+  </record>
+
 </odoo>
