@@ -23,6 +23,11 @@
         <span t-esc="round(line.quantity)"/>
     </xpath>
 
+    <xpath expr="//t[@t-set='display_discount']" position="after">
+        <t t-set="display_so_discount" t-value="any(l.so_line_id and l.so_line_id.discount for l in o.invoice_line_ids)"/>
+        <t t-set="display_discount" t-value="display_so_discount or display_discount"/>
+    </xpath>
+
     <xpath expr="//span[@t-field='line.price_unit']" position="replace">
         <span class="text-nowrap" t-field="line.price_unit" t-if="not line.so_line_id"/>
         <span class="text-nowrap" t-field="line.so_line_id.price_unit" t-if="line.so_line_id"/>
