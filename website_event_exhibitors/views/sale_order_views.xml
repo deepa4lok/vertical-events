@@ -73,6 +73,9 @@
                 <attribute name="groups">event.group_event_manager</attribute>
             </xpath>
 
+            <xpath expr="//div[@class='o_td_label'][1]" position="attributes">
+                <attribute name="groups"></attribute>
+            </xpath>
 
             <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
                 <field name="event_price_edit" invisible="1"/>
